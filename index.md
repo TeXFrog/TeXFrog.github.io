@@ -23,7 +23,7 @@ TeXFrog helps cryptographers manage game-hopping proofs in LaTeX. If you have ev
 - Consolidated comparison figures showing multiple games side by side
 - An interactive HTML viewer for navigating the proof in a browser
 
-All from that one source file. TeXFrog currently supports the [`cryptocode`](https://ctan.org/pkg/cryptocode) and [`nicodemus`](https://github.com/awslabs/nicodemus) pseudocode packages.
+All from that one source file. TeXFrog currently supports the [`cryptocode`](https://ctan.org/pkg/cryptocode) and [`nicodemus`](https://github.com/awslabs/nicodemus) pseudocode packages, and we are open to supporting others.
 
 <br>
 
