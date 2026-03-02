@@ -1,0 +1,157 @@
+---
+title: "Tutorial: nicodemus"
+layout: default
+parent: Examples
+nav_order: 2
+has_children: true
+---
+
+# TeXFrog Tutorial (nicodemus)
+
+[View interactive demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){: .btn .btn-primary target="_blank"}
+
+> **Package:** This tutorial uses [`nicodemus`](https://github.com/awslabs/nicodemus). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/).
+
+This tutorial contains the same IND-CPA proof as the cryptocode tutorial, rewritten for the `nicodemus` pseudocode package. Comparing the two shows the key syntax differences.
+
+## The Proof Scenario
+
+**Scheme.** A symmetric encryption scheme:
+
+```
+Enc(k, m)  =  (r, PRF(k, r) XOR m)    where r is fresh per call
+Dec(k, (r, c))  =  PRF(k, r) XOR c
+```
+
+**Theorem.** `Enc` is IND-CPA secure if `PRF` is a secure pseudorandom function.
+
+**Proof.** Via a two-hop game sequence:
+
+```
+G0 (Real)  ~_PRF  G1  =  G2 (Ideal)
+```
+
+| Game | What changes |
+|------|-------------|
+| G0 | Oracle computes `y <- PRF(k, r)`, returns `(r, y XOR m_b)` |
+| G1 | Oracle samples `y` at random, returns `(r, y XOR m_b)` |
+| G2 | Oracle samples `c` directly (message not used) |
+| Red1 | Reduction: replaces PRF call by querying an external challenger |
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `proof.yaml` | Declares the games, commentary, and figure specs (`package: nicodemus`) |
+| `games_source.tex` | Combined LaTeX source with `%:tags:` annotations |
+| `macros.tex` | Short macro definitions (no external dependencies) |
+| `nicodemus.sty` | The nicodemus pseudocode package |
+
+See the [Source Files]({{ site.baseurl }}/examples/tutorial-nicodemus/source-files/) page for the full contents of `proof.yaml` and `games_source.tex`.
+
+---
+
+## Key Differences from the cryptocode Tutorial
+
+The YAML configuration is almost identical. The main differences:
+
+1. **`package: nicodemus`** is set at the top of the YAML.
+2. **`nicodemus.sty`** is listed under `macros:` (`.sty` files are copied to the build directory for `\usepackage` but are not `\input`-ed).
+
+The source file syntax differs substantially:
+
+| cryptocode | nicodemus |
+|-----------|-----------|
+{% raw %}| `\begin{pcvstack}[boxed]` | `\begin{tabular}[t]{l}` + `\nicodemusboxNew{250pt}{%` |{% endraw %}
+| `\procedure[linenumbering]{Name}{` | `\textbf{Name}` |
+| `k \getsr \{0,1\}^\lambda \\` | `\item $k \getsr \{0,1\}^\lambda$` |
+| `\pcreturn (b' = b)` | `\item Return $(b' = b)$` |
+| `}` (closing procedure) | `\end{nicodemus}%` |
+
+**Key points:**
+- **Text mode**: nicodemus environments are text-mode, so math content needs explicit `$...$`.
+- **`\item` prefix**: Each pseudocode line starts with `\item` (nicodemus uses `enumerate`). The `\item` is kept outside `\tfchanged{}` to preserve list structure.
+- **No `\\` separators**: List items are naturally separated.
+- **Bold titles**: Procedure headers become `\textbf{...}` titles above `\begin{nicodemus}` blocks. Unlike cryptocode's `\procedure{...}{` syntax (ending with `{`, never wrapped in `\tfchanged`), nicodemus bold titles *are* wrapped when they change.
+
+---
+
+## The Combined Source (`games_source.tex`)
+
+### Lines with no tag appear in every game
+
+```latex
+\item $b \getsr \{0,1\}$
+\item $b' \gets \Adversary^{\mathsf{LR}}()$
+\item Return $(b' = b)$
+```
+
+### Lines with a tag appear only in named games
+
+```latex
+\item $k \getsr \{0,1\}^\lambda$ %:tags: G0-G2
+```
+
+### Consecutive variant lines encode "slots"
+
+The `y` computation is a three-way slot:
+
+```latex
+\item $y \gets \mathrm{PRF}(k, r)$ %:tags: G0
+\item $y \getsr \{0,1\}^\lambda$   %:tags: G1
+\item $y \gets \OPRF(r)$           %:tags: Red1
+```
+
+### Procedure titles
+
+In nicodemus, procedure titles are bold text labels above `\begin{nicodemus}` environments:
+
+```latex
+\textbf{$\INDCPA_\Enc^\Adversary.\mathsf{Real}()$} %:tags: G0
+\textbf{Game~1} %:tags: G1
+\textbf{$\INDCPA_\Enc^\Adversary.\mathsf{Ideal}()$} %:tags: G2
+\textbf{Reduction $\Bdversary_1^{\OPRF}$} %:tags: Red1
+```
+
+---
+
+## Running the Tutorial
+
+From the repo root:
+
+```bash
+# Generate per-game LaTeX files
+texfrog latex examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic
+
+# Build an interactive HTML viewer
+texfrog html build examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic_html
+
+# Or build and open in your browser with live reload
+texfrog html serve examples/tutorial-nicodemus/proof.yaml --live-reload
+```
+
+Or [view the pre-built interactive demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"}.
+
+---
+
+## What `\tfchanged` Looks Like
+
+The default highlight macro for nicodemus:
+
+```latex
+\providecommand{\tfchanged}[1]{\colorbox{blue!15}{#1}}
+```
+
+No `$...$` wrapping — unlike cryptocode, nicodemus content is text-mode. The `\item` prefix is kept outside `\tfchanged`:
+
+```latex
+\item \tfchanged{$y \getsr \{0,1\}^\lambda$}
+```
+
+---
+
+## Next Steps
+
+- [Writing a Proof]({{ site.baseurl }}/getting-started/writing-proofs/) — full reference for `proof.yaml` and source file syntax
+- [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/) — the same proof using `cryptocode` (with a more detailed walkthrough)
+- [LaTeX Integration]({{ site.baseurl }}/getting-started/latex-integration/) — customizing `\tfchanged` and `\tfgamelabel`
