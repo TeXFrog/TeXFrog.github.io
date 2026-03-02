@@ -96,10 +96,10 @@ TeXFrog also ships with tutorials you can study:
 
 ```bash
 # Tutorial: IND-CPA proof (4 games/reductions)
-texfrog latex examples/tutorial-cryptocode/proof.yaml -o /tmp/tf_tutorial
+texfrog latex examples/tutorial-cryptocode/proof.yaml -o /tmp/tf_tutorial_latex
 
 # Same tutorial using the nicodemus package
-texfrog latex examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic
+texfrog latex examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic_latex
 
 # Interactive HTML viewer with live reload
 texfrog html serve examples/tutorial-cryptocode/proof.yaml --live-reload

@@ -195,7 +195,7 @@ If you placed these in different parts of the file, they would all appear togeth
 
 When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` to highlight them. Two kinds of lines are never wrapped, even if they changed:
 
-- **Procedure headers**: lines ending with `{` (e.g. `\procedure{Name}{`). Wrapping these would break LaTeX brace matching.
+- **Procedure headers**: lines ending with `{` (e.g. `\procedure{Name}{`). Wrapping these would break LaTeX brace matching. For nicodemus, `\nicodemusheader{...}` lines are also never wrapped.
 - **Pure comment lines**: lines that start with `%`. These are invisible in the PDF, so wrapping them is pointless.
 
 ### Tips for Writing the Source

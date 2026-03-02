@@ -38,6 +38,8 @@ G0 (Real)  ~_PRF  G1  =  G2 (Ideal)
 | G2 | Oracle samples `c` directly (message not used) |
 | Red1 | Reduction: replaces PRF call by querying an external challenger |
 
+G0 to G1 is by PRF security (via Red1). G1 to G2 is a perfect equivalence.
+
 ## Files
 
 | File | Purpose |
@@ -63,7 +65,7 @@ The source file syntax differs substantially:
 | cryptocode | nicodemus |
 |-----------|-----------|
 {% raw %}| `\begin{pcvstack}[boxed]` | `\begin{tabular}[t]{l}` + `\nicodemusboxNew{250pt}{%` |{% endraw %}
-| `\procedure[linenumbering]{Name}{` | `\textbf{Name}` |
+| `\procedure[linenumbering]{Name}{` | `\nicodemusheader{Name}` |
 | `k \getsr \{0,1\}^\lambda \\` | `\item $k \getsr \{0,1\}^\lambda$` |
 | `\pcreturn (b' = b)` | `\item Return $(b' = b)$` |
 | `}` (closing procedure) | `\end{nicodemus}%` |
@@ -72,7 +74,7 @@ The source file syntax differs substantially:
 - **Text mode**: nicodemus environments are text-mode, so math content needs explicit `$...$`.
 - **`\item` prefix**: Each pseudocode line starts with `\item` (nicodemus uses `enumerate`). The `\item` is kept outside `\tfchanged{}` to preserve list structure.
 - **No `\\` separators**: List items are naturally separated.
-- **Bold titles**: Procedure headers become `\textbf{...}` titles above `\begin{nicodemus}` blocks. Unlike cryptocode's `\procedure{...}{` syntax (ending with `{`, never wrapped in `\tfchanged`), nicodemus bold titles *are* wrapped when they change.
+- **`\nicodemusheader`**: Procedure headers use `\nicodemusheader{...}` above `\begin{nicodemus}` blocks. Like cryptocode's `\procedure{...}{` syntax, `\nicodemusheader` lines are never wrapped in `\tfchanged`.
 
 ---
 
@@ -102,15 +104,15 @@ The `y` computation is a three-way slot:
 \item $y \gets \OPRF(r)$           %:tags: Red1
 ```
 
-### Procedure titles
+### Procedure headers
 
-In nicodemus, procedure titles are bold text labels above `\begin{nicodemus}` environments:
+In nicodemus, procedure headers use `\nicodemusheader{...}` above `\begin{nicodemus}` environments:
 
 ```latex
-\textbf{$\INDCPA_\Enc^\Adversary.\mathsf{Real}()$} %:tags: G0
-\textbf{Game~1} %:tags: G1
-\textbf{$\INDCPA_\Enc^\Adversary.\mathsf{Ideal}()$} %:tags: G2
-\textbf{Reduction $\Bdversary_1^{\OPRF}$} %:tags: Red1
+\nicodemusheader{$\INDCPA_\Enc^\Adversary.\mathsf{Real}()$} %:tags: G0
+\nicodemusheader{Game~1} %:tags: G1
+\nicodemusheader{$\INDCPA_\Enc^\Adversary.\mathsf{Ideal}()$} %:tags: G2
+\nicodemusheader{Reduction $\Bdversary_1^{\OPRF}$} %:tags: Red1
 ```
 
 ---
@@ -121,7 +123,7 @@ From the repo root:
 
 ```bash
 # Generate per-game LaTeX files
-texfrog latex examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic
+texfrog latex examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic_latex
 
 # Build an interactive HTML viewer
 texfrog html build examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic_html
