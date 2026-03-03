@@ -10,7 +10,10 @@ has_children: true
 
 [View interactive demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){: .btn .btn-primary target="_blank"}
 
-> **Package:** This tutorial uses [`nicodemus`](https://github.com/awslabs/nicodemus). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/).
+{: .note-title }
+> Package
+>
+> This tutorial uses [`nicodemus`](https://github.com/awslabs/nicodemus). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/).
 
 This tutorial contains the same IND-CPA proof as the cryptocode tutorial, rewritten for the `nicodemus` pseudocode package. Comparing the two shows the key syntax differences.
 

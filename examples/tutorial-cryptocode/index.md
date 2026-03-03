@@ -10,7 +10,10 @@ has_children: true
 
 [View interactive demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){: .btn .btn-primary target="_blank"}
 
-> **Package:** This tutorial uses [`cryptocode`](https://ctan.org/pkg/cryptocode) (the default). For the same proof using `nicodemus`, see [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/).
+{: .note-title }
+> Package
+>
+> This tutorial uses [`cryptocode`](https://ctan.org/pkg/cryptocode) (the default). For the same proof using `nicodemus`, see [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/).
 
 This tutorial walks through a small, complete game-hopping proof to introduce important TeXFrog concepts. The proof is short enough to read in full, but exercises several features of the tool.
 
