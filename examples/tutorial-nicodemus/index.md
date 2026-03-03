@@ -52,6 +52,7 @@ G0 to G1 is by PRF security (via Red1). G1 to G2 is by a birthday bound on nonce
 | `games_source.tex` | Combined LaTeX source with `%:tags:` annotations |
 | `macros.tex` | Short macro definitions (no external dependencies) |
 | `nicodemus.sty` | The nicodemus pseudocode package |
+| `commentary/*.tex` | Per-game commentary files (LaTeX) |
 
 See the [Source Files]({{ site.baseurl }}/examples/tutorial-nicodemus/source-files/) page for the full contents of `proof.yaml` and `games_source.tex`.
 
