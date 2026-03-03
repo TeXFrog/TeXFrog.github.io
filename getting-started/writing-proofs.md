@@ -172,7 +172,7 @@ Ranges are resolved **positionally** — by the order games appear in the YAML f
 
 This lets you insert reductions (e.g. `Red2`) between games without breaking range syntax.
 
-Unknown labels in tags are silently ignored, so a typo like `%:tags: G10` when `G10` doesn't exist will simply cause the line to appear in no game. Run `texfrog check --strict` to catch these — see [Troubleshooting]({{ site.baseurl }}/getting-started/troubleshooting/#lines-are-missing-from-a-game).
+Unknown labels in tags will raise a warning on the command line but otherwise are silently ignored, so a typo like `%:tags: G10` when `G10` doesn't exist will simply cause the line to appear in no game. Run `texfrog check --strict` to catch these — see [Troubleshooting]({{ site.baseurl }}/getting-started/troubleshooting/#lines-are-missing-from-a-game).
 
 ### Source Ordering Constraint
 
