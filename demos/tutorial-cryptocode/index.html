@@ -18,6 +18,7 @@
 \newcommand{\Adversary}{\mathcal{A}}
 \newcommand{\Bdversary}{\mathcal{B}}
 \newcommand{\OPRF}{\mathcal{O}_{\mathsf{prf}}}
+\newcommand{\RF}{\mathrm{RF}}
 \newcommand{\getsr}{{\:\leftarrow\hspace*{-3pt}\raisebox{.5pt}{$\scriptscriptstyle\$$}\:}}
   \]</div>
   <div id="nav">
@@ -73,7 +74,7 @@
   {
     "label": "G0",
     "latex_name": "G_0",
-    "description": "$\\INDCPA_\\Enc^\\Adversary.\\mathsf{Real}()$: the real IND-CPA game. The LR oracle encrypts using the actual PRF.",
+    "description": "$\\INDCPA_\\Enc^\\Adversary()$: The IND-CPA game. The LR oracle encrypts using the actual PRF.",
     "has_commentary": true,
     "reduction": false,
     "related_games": []
@@ -81,7 +82,7 @@
   {
     "label": "G1",
     "latex_name": "G_1",
-    "description": "Replace $\\mathrm{PRF}(k, r)$ with a truly random value.",
+    "description": "Replace $\\mathrm{PRF}(k, r)$ with a truly random function $\\RF(r)$.",
     "has_commentary": true,
     "reduction": false,
     "related_games": []
@@ -100,7 +101,15 @@
   {
     "label": "G2",
     "latex_name": "G_2",
-    "description": "$\\INDCPA_\\Enc^\\Adversary.\\mathsf{Ideal}()$: the ideal IND-CPA game. Ciphertext is uniformly random, independent of $m_b$.",
+    "description": "Replace $\\RF(r)$ with independently sampled randomness.",
+    "has_commentary": true,
+    "reduction": false,
+    "related_games": []
+  },
+  {
+    "label": "G3",
+    "latex_name": "G_3",
+    "description": "Ciphertext is uniformly random, independent of $m_b$.",
     "has_commentary": true,
     "reduction": false,
     "related_games": []
