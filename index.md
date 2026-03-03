@@ -27,6 +27,6 @@ All from that one source file. TeXFrog currently supports the [`cryptocode`](htt
 
 <br>
 
-## Live demo
+## Live demos
 
-[![TeXFrog HTML proof viewer]({{ site.baseurl }}/assets/images/screenshot-web.png)]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"}
+[![TeXFrog HTML proof viewer]({{ site.baseurl }}/assets/images/screenshot-web.png)]({{ site.baseurl }}/examples/){:target="_blank"}

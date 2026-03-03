@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeXFrog Proof Viewer</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+  MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <!-- Hidden block so MathJax learns user-defined macros before rendering -->
+  <div id="mathjax-macros" style="display:none">\[
+\newcommand{\full}{\!$\cdot$\,}
+\newcommand{\core}{\hphantom{\!$\cdot$\,}}
+\newcommand{\tor}{\to_{\$}}
+\newcommand{\getsr}{\gets_{\$}}
+\newcommand{\getscup}{\overset{\raisebox{-1pt}{\tiny$\;\cup$}}{\gets}}
+\newcommand{\getsconcat}{\overset{\raisebox{-1pt}{\tiny$\;\shortparallel$}}{\gets}} % "concat assignment"
+\newcommand{\T}{\mathtt{tru}}
+\newcommand{\F}{\mathtt{fal}}
+\newcommand{\BB}{\{0,1\}}
+\newcommand{\Bool}{\{\T,\F\}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Gprime}{p}
+\newcommand{\Ggenerator}{g}
+\newcommand{\bO}{\mathcal{O}}
+\newcommand{\PS}{\mathcal{P}}
+\newcommand{\Zp}{\ZZ_\Gprime}
+\newcommand{\bool}[1]{\llbracket #1\rrbracket}
+\newcommand{\es}{\epsilon}
+\newcommand{\secp}{\lambda}
+\newcommand{\crs}{\mathit{crs}}
+\newcommand{\Adv}{\mathrm{Adv}}
+\newcommand{\bad}{\mathrm{bad}}
+\newcommand{\win}{\mathrm{win}}
+\newcommand{\highlight}[1]{{\color{blue} #1}}
+\newcommand{\pk}{\mathit{pk}}
+\newcommand{\vk}{\mathit{vk}}
+\newcommand{\st}{\mathit{st}}
+\newcommand{\stS}{\st_\mathrm{R}}
+\newcommand{\stR}{\st_\mathrm{R}}
+\newcommand{\sk}{\mathit{sk}}
+\newcommand{\param}{\mathit{param}}
+\newcommand{\ad}{\mathit{ad}}
+\newcommand{\id}{\mathit{id}}
+\newcommand{\ak}{\mathit{ak}}%
+\newcommand{\ek}{\mathit{ek}}%
+\newcommand{\sig}{\sigma}%
+\newcommand{\grpid}{\mathit{gid}}%
+\newcommand{\tk}{\mathit{tk}}%
+\newcommand{\stsp}{\mathcal{ST}}
+\newcommand{\sksp}{\mathcal{SK}}
+\newcommand{\pksp}{\mathcal{PK}}
+\newcommand{\eksp}{\mathcal{EK}}
+\newcommand{\dksp}{\mathcal{DK}}
+\newcommand{\pmsp}{\mathcal{PM}}
+\newcommand{\csp}{\mathcal{C}}
+\newcommand{\msp}{\mathcal{M}}
+\newcommand{\ksp}{\mathcal{K}}
+\newcommand{\adsp}{\mathcal{AD}}
+\newcommand{\idsp}{\mathcal{ID}}
+\newcommand{\usp}{\mathcal{U}}
+\newcommand{\isp}{\mathcal{I}}
+\newcommand{\rsp}{\mathcal{R}}
+\newcommand{\grpidsp}{\mathcal{GID}}
+\newcommand{\opsp}{\mathcal{OP}}
+\newcommand{\tksp}{\mathcal{TK}}
+\newcommand{\sigsp}{\mathcal{S}}
+\newcommand{\cFut}{\mathtt{fut}}%
+\newcommand{\ROh}{\mathrm{H}}%
+\newcommand{\ROhp}{\mathrm{H}'}%
+\newcommand{\ROhi}{\mathrm{H}_i}%
+\newcommand{\ROhip}[1]{\mathrm{H}_{#1}}%
+\newcommand{\ROhpp}{\mathrm{H}''}%
+\newcommand{\KE}{\mathrm{KE}}
+\newcommand{\KEgen}{\KE.\mathrm{gen}}
+\newcommand{\KEinit}{\KE.\mathrm{init}}
+\newcommand{\KEresp}{\KE.\mathrm{resp}}
+\newcommand{\KErecv}{\KE.\mathrm{recv}}
+\newcommand{\NKE}{\mathrm{NKE}}
+\newcommand{\NKEgen}{\NKE.\mathrm{gen}}
+\newcommand{\NKEeval}{\NKE.\mathrm{eval}}
+\newcommand{\SIG}{\mathrm{SIG}}
+\newcommand{\SIGgen}{\SIG.\mathrm{gen}}
+\newcommand{\SIGsig}{\SIG.\mathrm{sig}}
+\newcommand{\SIGvfy}{\SIG.\mathrm{vfy}}
+\newcommand{\sksig}{\sk_{\SIG}}
+\newcommand{\pksig}{\pk_{\SIG}}
+\newcommand{\KEM}{\mathrm{KEM}}
+\newcommand{\KEMgen}{\KEM.\mathrm{gen}}
+\newcommand{\KEMenc}{\KEM.\mathrm{enc}}
+\newcommand{\KEMdec}{\KEM.\mathrm{dec}}
+\newcommand{\skkem}{\sk_{\KEM}}
+\newcommand{\pkkem}{\pk_{\KEM}}
+\newcommand{\ckem}{c_{\KEM}}
+\newcommand{\kkem}{k_{\KEM}}
+\newcommand{\skkeme}{\sk_{\KEM,e}}
+\newcommand{\pkkeme}{\pk_{\KEM,e}}
+\newcommand{\ckeme}{c_{\KEM,e}}
+\newcommand{\kkeme}{k_{\KEM,e}}
+\newcommand{\skkems}{\sk_{\KEM,s}}
+\newcommand{\pkkems}{\pk_{\KEM,s}}
+\newcommand{\ckems}{c_{\KEM,s}}
+\newcommand{\kkems}{k_{\KEM,s}}
+\newcommand{\PRF}{\mathrm{PRF}}
+\newcommand{\DPRF}{\mathrm{DPRF}}
+\newcommand{\Hash}{\mathrm{Hash}}
+\newcommand{\group}{\mathbb{G}}
+\newcommand{\groupdescription}{\group,p,g}
+\newcommand{\advA}{\mathcal{A}}
+\newcommand{\advB}{\mathcal{B}}
+\newcommand{\advD}{\mathcal{D}}
+\newcommand{\CORR}{\mathrm{CORR}}
+\newcommand{\IND}{\mathrm{IND}}
+\newcommand{\INDR}{\mathrm{INDR}}
+\newcommand{\ind}{\mathrm{ind}}
+\newcommand{\indr}{\mathrm{indr}}
+\newcommand{\ANON}{\mathrm{ANON}}
+\newcommand{\ufcma}{\mathrm{uf\text{-}cma}}
+\newcommand{\sufcma}{\mathrm{suf\text{-}cma}}
+\newcommand{\UFCMA}{\mathrm{UF\text{-}CMA}}
+\newcommand{\SUFCMA}{\mathrm{SUF\text{-}CMA}}
+\newcommand{\stcdh}{\mathrm{st\text{-}cdh}}
+\newcommand{\StCDH}{\mathrm{St\text{-}CDH}}
+\newcommand{\StCDHmuc}{(q_1,q_2)\text{-}\mathrm{St\text{-}CDH}}
+\newcommand{\stcdhmuc}{(q_1,q_2)\text{-}\mathrm{st\text{-}cdh}}
+\newcommand{\StCDHmucp}[1]{#1\text{-}\mathrm{St\text{-}CDH}}
+\newcommand{\stcdhmucp}[1]{#1\text{-}\mathrm{st\text{-}cdh}}
+\newcommand{\UFCMAmuc}{q\mathrm{\text{-}UF\text{-}CMA}}
+\newcommand{\ufcmamuc}{q\text{-}\mathrm{uf\text{-}cma}}
+\newcommand{\UFCMAmucp}[1]{#1\mathrm{\text{-}UF\text{-}CMA}}
+\newcommand{\ufcmamucp}[1]{#1\text{-}\mathrm{uf\text{-}cma}}
+\newcommand{\SUFCMAmuc}{q\mathrm{\text{-}SUF\text{-}CMA}}
+\newcommand{\sufcmamuc}{q\text{-}\mathrm{suf\text{-}cma}}
+\newcommand{\SUFCMAmucp}[1]{#1\mathrm{\text{-}SUF\text{-}CMA}}
+\newcommand{\sufcmamucp}[1]{#1\text{-}\mathrm{suf\text{-}cma}}
+\newcommand{\ch}{\mathit{ch}}%
+\newcommand{\XP}{\mathit{XP}}%
+\newcommand{\CR}{\mathit{CR}}%
+\newcommand{\ICH}{\mathit{ICH}}%
+\newcommand{\RCH}{\mathit{RCH}}%
+\newcommand{\Rexp}{\mathit{RS}}%
+\newcommand{\Ogen}{\mathrm{Gen}}
+\newcommand{\OPgen}{\mathrm{Gen}'}
+\newcommand{\Oinit}{\mathrm{Init}}
+\newcommand{\Oenc}{\mathrm{Enc}}
+\newcommand{\Odec}{\mathrm{Dec}}
+\newcommand{\Oup}{\mathrm{Up}}
+\newcommand{\OupS}{\mathrm{Up}_\mathrm{S}}
+\newcommand{\OupR}{\mathrm{Up}_\mathrm{R}}
+\newcommand{\Osnd}{\mathrm{Snd}}
+\newcommand{\Orcv}{\mathrm{Rcv}}
+\newcommand{\Oresp}{\mathrm{Respond}}%
+\newcommand{\Orecv}{\mathrm{Receive}}%
+\newcommand{\Ochall}{\mathrm{Chall}}
+\newcommand{\Oreveal}{\mathrm{Reveal}}
+\newcommand{\Oexp}{\mathrm{Expose}}
+\newcommand{\Ocorr}{\mathrm{Corrupt}}
+\newcommand{\OPcorr}{\mathrm{Corrupt}'}
+\newcommand{\OexpS}{\Oexp_\mathrm{S}}
+\newcommand{\OexpR}{\Oexp_\mathrm{R}}
+\newcommand{\Ox}{1}
+\newcommand{\Oy}{2}
+\newcommand{\Ogenx}{\mathrm{Gen}_{\Ox}}
+\newcommand{\Ogeny}{\mathrm{Gen}_{\Oy}}
+\newcommand{\Ocorrx}{\mathrm{Corrupt}_{\Ox}}
+\newcommand{\Ocorry}{\mathrm{Corrupt}_{\Oy}}
+\newcommand{\CRx}{\CR_{\Ox}}
+\newcommand{\CRy}{\CR_{\Oy}}
+\newcommand{\Oddh}{\mathrm{DDH}}
+\newcommand{\Osig}{\mathrm{Sign}}
+\newcommand{\qgen}{q_{\mathrm{gen}}}
+\newcommand{\qinit}{q_{\mathrm{init}}}
+\newcommand{\qresp}{q_{\mathrm{resp}}}
+\newcommand{\qrecv}{q_{\mathrm{recv}}}
+\newcommand{\qddh}{q_{\mathrm{ddh}}}
+\newcommand{\qhash}{q_{\ROh}}
+\newcommand{\qsig}{q_{\mathrm{sig}}}
+\newcommand{\is}{\mathit{is}}%
+\newcommand{\ep}{\mathit{ep}}%
+\newcommand{\epS}{\ep_\mathrm{S}}%
+\newcommand{\epR}{\ep_\mathrm{R}}%
+\newcommand{\oos}{\mathit{oos}}%
+\newcommand{\CM}{\mathit{CM}}%
+\newcommand{\CH}{\mathit{CH}}%
+\newcommand{\DHSet}{\mathit{DH}}
+\newcommand{\signedDH}{\KE_{2}}%
+\newcommand{\signedDHgen}{\signedDH.\mathrm{gen}}
+\newcommand{\signedDHinit}{\signedDH.\mathrm{init}}
+\newcommand{\signedDHresp}{\signedDH.\mathrm{resp}}
+\newcommand{\signedDHrecv}{\signedDH.\mathrm{recv}}
+\newcommand{\signedKEM}{\KE_{3}}%
+\newcommand{\signedKEMgen}{\signedKEM.\mathrm{gen}}
+\newcommand{\signedKEMinit}{\signedKEM.\mathrm{init}}
+\newcommand{\signedKEMresp}{\signedKEM.\mathrm{resp}}
+\newcommand{\signedKEMrecv}{\signedKEM.\mathrm{recv}}
+\newcommand{\hybridKE}{\KE_{4}}%
+\newcommand{\hybridKEgen}{\hybridKE.\mathrm{gen}}
+\newcommand{\hybridKEinit}{\hybridKE.\mathrm{init}}
+\newcommand{\hybridKEresp}{\hybridKE.\mathrm{resp}}
+\newcommand{\hybridKErecv}{\hybridKE.\mathrm{recv}}
+\newcommand{\ntor}{\KE_{5}}%
+\newcommand{\ntorgen}{\ntor.\mathrm{gen}}
+\newcommand{\ntorinit}{\ntor.\mathrm{init}}
+\newcommand{\ntorresp}{\ntor.\mathrm{resp}}
+\newcommand{\ntorrecv}{\ntor.\mathrm{recv}}
+\newcommand{\mk}{\mathit{mk}}
+\newcommand{\auth}{\mathit{auth}}
+\newcommand{\game}{\mathsf{G}}
+\newcommand{\gameb}[1]{\mathsf{G}^b_{#1}}
+\def\sequencename{#1}
+\newcommand{\GameID}{#1}
+\renewcommand{\GameID}{#1}
+\newcommand{\PrevLabel}{\GameID.NULL}
+\renewcommand{\PrevLabel}{\GameID.NULL}
+\newcommand{\ThisLabel}{\GameID.NULL}
+\renewcommand{\ThisLabel}{\GameID.NULL}
+\renewcommand{\ThisLabel}{\GameID.#1}
+\renewcommand{\ThisLabel}{\GameID.#1}
+\renewcommand{\ThisLabel}{\GameID.#1}
+\newcommand{\gamerefW}[1]{\Pr[\gamerefA{#1} \Rightarrow 1]}
+\newcommand{\gamerefWi}[2]{\Pr[\gamerefAi{#1}{#2} \Rightarrow 1]}
+\newcommand{\commentseparator}{{\color{black!65}\smash{\textbackslash\!\!\textbackslash\hspace{0.1em}}}}
+\newcommand{\codecommentgames}[2]{\codecomment{$\gameref{#1}$-$\gameref{#2}$}}
+\newcommand{\codecommentgame}[1]{\codecomment{$\gameref{#1}$}}
+\newcommand{\gamebrefW}[1]{\Pr[\gamebrefA{#1} \Rightarrow 1]}
+\newcommand{\gamebrefWi}[2]{\Pr[\gamebrefAi{#1}{#2} \Rightarrow 1]}
+\newcommand{\codecommentgamesb}[2]{\codecomment{$\gamebref{#1}$-$\gamebref{#2}$}}
+\newcommand{\codecommentgameb}[1]{\codecomment{$\gamebref{#1}$}}
+\newcommand{\nicosetlinenr}[1]{\setcounter{nicolinenr}{#1}}
+\newcommand{\nicoresetlinenr}{\nicosetlinenr{0}}
+\newcommand{\PaddingUp}[1]{\expandafter\two@digits\csname c@#1\endcsname}
+\newcommand{\markerleft}[1]{{\hspace*{0pt}\pgfsys@markposition{BPMARKER_LEFT_#1}\hspace*{0pt}}}
+\newcommand{\markerright}[1]{{\hspace*{0pt}\pgfsys@markposition{BPMARKER_RIGHT_#1}\hspace*{0pt}}}
+\newcommand{\markersetlen}[2]{\expandafter\def\csname markerlen#1\endcsname{#2}\write\@auxout{\@percentchar BPMARKER_LEN_#1 #2}}
+  \]</div>
+  <div id="nav">
+    <h2>Games</h2>
+    <div id="game-list-wrapper">
+      <ul id="game-list">
+      </ul>
+    </div>
+    <div id="zoom-controls">
+      <button onclick="adjustZoom(-0.1)" title="Zoom out">&minus;</button>
+      <span id="zoom-level">100%</span>
+      <button onclick="adjustZoom(+0.1)" title="Zoom in">+</button>
+    </div>
+  </div>
+  <div id="main">
+    <div id="controls">
+      <button id="btn-prev" onclick="navigate(-1)">&#8592; Prev</button>
+      <div id="title-block">
+        <span id="game-title"></span>
+        <div id="game-subtitle"></div>
+      </div>
+      <button id="btn-next" onclick="navigate(+1)">Next &#8594;</button>
+    </div>
+    <div id="game-display">
+      <div id="game-svg-container"></div>
+      <div id="commentary-box"></div>
+    </div>
+  </div>
+  <button id="help-btn" onclick="toggleHelp()" title="Keyboard shortcuts (?)"
+          aria-label="Show keyboard shortcuts">?</button>
+  <div id="help-overlay" onclick="toggleHelp()">
+    <div id="help-content" onclick="event.stopPropagation()">
+      <p id="help-branding">Generated with <a href="https://texfrog.github.io/" target="_blank" rel="noopener">TeXFrog</a></p>
+      <h3>Keyboard shortcuts</h3>
+      <table>
+        <tr><td><kbd>&larr;</kbd> <kbd>&uarr;</kbd></td><td>Previous game</td></tr>
+        <tr><td><kbd>&rarr;</kbd> <kbd>&darr;</kbd></td><td>Next game</td></tr>
+        <tr><td><kbd>+</kbd></td><td>Zoom in</td></tr>
+        <tr><td><kbd>&minus;</kbd></td><td>Zoom out</td></tr>
+        <tr><td><kbd>?</kbd></td><td>Toggle this help</td></tr>
+      </table>
+      <h3>Tips</h3>
+      <ul>
+        <li>URL hash links directly to a game (e.g. <code>#G3</code>)</li>
+        <li>Live reload auto-refreshes when using <code>--live-reload</code></li>
+      </ul>
+      <button onclick="toggleHelp()">Close</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script>
+    const GAMES = [
+  {
+    "label": "G0",
+    "latex_name": "\\game^b_0",
+    "description": "The original IND game.",
+    "has_commentary": false,
+    "reduction": false,
+    "related_games": []
+  },
+  {
+    "label": "G1",
+    "latex_name": "\\game^b_1",
+    "description": "Handle key generation collision ($\\bad_1$ flag).",
+    "has_commentary": false,
+    "reduction": false,
+    "related_games": []
+  },
+  {
+    "label": "G2",
+    "latex_name": "\\game^b_2",
+    "description": "Handle signature forgery ($\\bad_2$ flag in $\\Orecv$).",
+    "has_commentary": false,
+    "reduction": false,
+    "related_games": []
+  },
+  {
+    "label": "RedSig",
+    "latex_name": "\\advB_{1,b}",
+    "description": "Reduction against $\\SUFCMAmucp{\\qgen}$ security of $\\SIG$, simulating Games~1 and~2.",
+    "has_commentary": false,
+    "reduction": true,
+    "related_games": [
+      "G1",
+      "G2"
+    ]
+  },
+  {
+    "label": "G3",
+    "latex_name": "\\game^b_3",
+    "description": "Prepare for CDH reduction with internal random oracle $\\ROhp$.",
+    "has_commentary": false,
+    "reduction": false,
+    "related_games": []
+  },
+  {
+    "label": "RedCDH",
+    "latex_name": "\\advB_2",
+    "description": "Reduction against $\\StCDHmucp{(\\qinit,\\qresp)}$.",
+    "has_commentary": false,
+    "reduction": true,
+    "related_games": [
+      "G3"
+    ]
+  }
+];
+    init(GAMES);
+  </script>
+</body>
+</html>
