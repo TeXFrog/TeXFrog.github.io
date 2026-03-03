@@ -52,20 +52,25 @@ LaTeX and Poppler are only needed for the HTML viewer (`texfrog html`). The LaTe
 
 ## Installation and Running
 
-Because TeXFrog is still in preview mode, it is not yet available to install via `pip`. You will need to install it by cloning it from GitHub:
+You can install TeXFrog using Python's package manager, `pip`:
 
 ```bash
-git clone https://github.com/TeXFrog/TeXFrog
-cd TeXFrog
+pip install texfrog
+```
+
+Many Python installations don't let you install global packages, so you'll need to create a virtual environment:
+
+```bash
+cd my_working_directory      # wherever you want to install the venv
 python3 -m venv .venv
 source .venv/bin/activate    # on macOS/Linux; use .venv\Scripts\activate on Windows
-pip install -e .
+pip install texfrog
 ```
 
 When you open a new terminal session and want to run TeXFrog, you will need to reactivate the Python virtual environment:
 
 ```bash
-cd TeXFrog
+cd my_working_directory      # wherever you installed the venv
 source .venv/bin/activate    # on macOS/Linux; use .venv\Scripts\activate on Windows
 ```
 
@@ -92,17 +97,22 @@ Build it immediately:
 texfrog latex proof.yaml -o /tmp/tf_output
 ```
 
-TeXFrog also ships with tutorials you can study:
+The [TeXFrog repository contains tutorials](https://github.com/TeXFrog/TeXFrog/tree/main/examples) you can study:
 
 ```bash
+# Download them from https://github.com/TeXFrog/TeXFrog/tree/main/examples
+# or clone the repository using the following two lines:
+git clone https://github.com/TeXFrog/TeXFrog
+cd TeXFrog/examples
+
 # Tutorial: IND-CPA proof (4 games/reductions)
-texfrog latex examples/tutorial-cryptocode/proof.yaml -o /tmp/tf_tutorial_latex
+texfrog latex tutorial-cryptocode/proof.yaml
 
 # Same tutorial using the nicodemus package
-texfrog latex examples/tutorial-nicodemus/proof.yaml -o /tmp/tf_tutorial_nic_latex
+texfrog latex tutorial-nicodemus/proof.yaml
 
 # Interactive HTML viewer with live reload
-texfrog html serve examples/tutorial-cryptocode/proof.yaml --live-reload
+texfrog html serve tutorial-cryptocode/proof.yaml --live-reload
 ```
 
 ## Usage
@@ -173,5 +183,4 @@ To set up a development environment:
 
 ```bash
 pip install -e ".[dev]"
-pytest tests/ -q
 ```
