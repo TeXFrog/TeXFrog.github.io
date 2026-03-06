@@ -238,6 +238,8 @@
 \newcommand{\markerright}[1]{{\hspace*{0pt}\pgfsys@markposition{BPMARKER_RIGHT_#1}\hspace*{0pt}}}
 \newcommand{\markersetlen}[2]{\expandafter\def\csname markerlen#1\endcsname{#2}\write\@auxout{\@percentchar BPMARKER_LEN_#1 #2}}
   \]</div>
+  <button id="nav-toggle" onclick="toggleNav()" aria-label="Toggle sidebar">&#9776;</button>
+  <div id="nav-backdrop" onclick="toggleNav()"></div>
   <div id="nav">
     <h2>Games</h2>
     <div id="game-list-wrapper">
