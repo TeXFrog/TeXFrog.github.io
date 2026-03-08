@@ -86,6 +86,7 @@ The `.tex` file is the single source of truth. It compiles directly with `pdflat
 
 ### The proof source
 
+{% raw %}
 ```latex
 \begin{tfsource}{indcpa}
 \begin{pcvstack}[boxed]
@@ -105,6 +106,7 @@ The `.tex` file is the single source of truth. It compiles directly with `pdflat
 \end{pcvstack}
 \end{tfsource}
 ```
+{% endraw %}
 
 All pseudocode lives in a single `tfsource` environment. Lines not wrapped in `\tfonly` appear in every game. Lines inside `\tfonly{tags}{content}` appear only in the listed games.
 
@@ -145,6 +147,7 @@ For each game, at most one of these lines survives filtering. They are consecuti
 
 Procedure headers use `\tfonly*` (starred) so they appear in individual games but are suppressed in consolidated figures:
 
+{% raw %}
 ```latex
 \procedure[linenumbering]{%
   \tfonly*{G0}{Game $\tfgamename{G0}$}%
@@ -152,6 +155,7 @@ Procedure headers use `\tfonly*` (starred) so they appear in individual games bu
   \tffigonly{Games $\tfgamename{G0}$--$\tfgamename{G3}$}%
 }{...}
 ```
+{% endraw %}
 
 ### Rendering
 

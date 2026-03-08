@@ -12,6 +12,7 @@ These are the input files for the [cryptocode tutorial]({{ site.baseurl }}/examp
 
 ## main.tex
 
+{% raw %}
 ```latex
 \documentclass{article}
 
@@ -140,3 +141,4 @@ We proceed via a sequence of games. Figure~\ref{fig:all-games} shows all the gam
 
 \end{document}
 ```
+{% endraw %}

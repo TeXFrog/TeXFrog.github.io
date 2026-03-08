@@ -172,6 +172,7 @@ The `tfsource` environment contains the pseudocode for all games merged together
 
 **`\begin{tfsource}{name}...\end{tfsource}`** defines a named source block. The `name` is referenced by `\tfrendergame` and `\tfrenderfigure`.
 
+{% raw %}
 ```latex
 \begin{tfsource}{indcpa}
 \begin{pcvstack}[boxed]
@@ -188,6 +189,7 @@ The `tfsource` environment contains the pseudocode for all games merged together
 \end{pcvstack}
 \end{tfsource}
 ```
+{% endraw %}
 
 Inside `tfsource`, use the following commands to control which content appears in which games:
 
@@ -205,6 +207,7 @@ Inside `tfsource`, use the following commands to control which content appears i
 
 Typical pattern for procedure headers:
 
+{% raw %}
 ```latex
 \procedure[linenumbering]{%
   \tfonly*{G0}{Game $\tfgamename{G0}$}%
@@ -212,6 +215,7 @@ Typical pattern for procedure headers:
   \tffigonly{Games $\tfgamename{G0}$--$\tfgamename{G1}$}%
 }{...}
 ```
+{% endraw %}
 
 ### Tag Syntax
 
@@ -279,6 +283,7 @@ When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` 
 
 **One game header per game.** If you use `\procedure` environments, put each game's procedure header as a `\tfonly*` call so only the right header appears in each game:
 
+{% raw %}
 ```latex
 \procedure[linenumbering]{%
   \tfonly*{G0}{Starting game $= \indcca_\QSH^\adv.\REAL()$}%
@@ -287,6 +292,7 @@ When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` 
   \tffigonly{Games $G_0$--$G_2$}%
 }{...}
 ```
+{% endraw %}
 
 **Avoid blank lines in the source block.** Blank lines in output are stripped to prevent `varwidth` dimension errors in pseudocode environments like `pcvstack`. See [Troubleshooting]({{ site.baseurl }}/getting-started/troubleshooting/#dimension-too-large-from-pdflatex) for more on this error.
 
