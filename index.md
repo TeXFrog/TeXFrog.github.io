@@ -4,6 +4,10 @@ layout: home
 nav_order: 1
 ---
 
+<p align="center">
+  <img src="texfrog.png" alt="TeXFrog logo" width="120"/>
+</p>
+
 # TeXFrog
 
 <br>
