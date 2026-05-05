@@ -123,4 +123,4 @@ The HTML output is self-contained in its directory and can be served from any st
 
 ### Troubleshooting HTML Build
 
-For a full list of common errors and solutions, see [Troubleshooting & FAQ]({{ site.baseurl }}/getting-started/troubleshooting/#html-build-issues).
+For a full list of common errors and solutions, see [Troubleshooting & FAQ]({{ site.baseurl }}/getting-started/troubleshooting.html#html-build-issues).
