@@ -15,7 +15,7 @@ nav_order: 1
 {: .note-title }
 > Note
 >
-> TeXFrog is an early-stage tool under active development. The input format, command-line interface, and output may change as the design evolves. [Feedback, suggestions, and contributions]({{ site.baseurl }}/getting-started/#contributing) are very welcome.
+> TeXFrog is an early-stage tool under active development. The input format, command-line interface, and output may change as the design evolves. [Feedback, suggestions, and contributions]({% link getting-started/index.md %}#contributing) are very welcome.
 
 <br>
 
@@ -33,4 +33,4 @@ All from that one source file. TeXFrog currently supports the [`cryptocode`](htt
 
 ## Live demos
 
-[![TeXFrog HTML proof viewer]({{ site.baseurl }}/assets/images/screenshot-web.png)]({{ site.baseurl }}/examples/){:target="_blank"}
+[![TeXFrog HTML proof viewer]({{ site.baseurl }}/assets/images/screenshot-web.png)]({% link examples/index.md %}){:target="_blank"}

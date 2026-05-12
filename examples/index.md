@@ -19,8 +19,8 @@ We also have a demo of TeXFrog for a key exchange model, specifically a signed-D
 | Example | Pseudocode Package | Source Files | Live Demo |
 |----------|---------|--------------|-----------|
 | [Tutorial: cryptocode quickstart](https://github.com/TeXFrog/TeXFrog/tree/main/examples/tutorial-cryptocode-quickstart) | `cryptocode` | N/A | N/A |
-| [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/) | `cryptocode` | [Source]({{ site.baseurl }}/examples/tutorial-cryptocode/source-files.html) | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
-| [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/) | `nicodemus` | [Source]({{ site.baseurl }}/examples/tutorial-nicodemus/source-files.html) | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
+| [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) | `cryptocode` | [Source]({% link examples/tutorial-cryptocode/source-files.md %}) | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
+| [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) | `nicodemus` | [Source]({% link examples/tutorial-nicodemus/source-files.md %}) | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
 | [Multiple proofs](https://github.com/TeXFrog/TeXFrog/tree/main/examples/example-multiproof) | `cryptocode` | N/A | N/A |
 | [Signed DH proof](https://github.com/proof-ladders/protocol-ladder/blob/main/Notes/computational/main.pdf){:target="_blank" } | `nicodemus` | N/A | [View demo]({{ site.baseurl }}/demos/example-proof-ladders-signed-dh/){:target="_blank"} |
 

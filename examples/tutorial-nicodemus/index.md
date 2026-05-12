@@ -13,7 +13,7 @@ has_children: true
 {: .note-title }
 > Package
 >
-> This tutorial uses [`nicodemus`](https://github.com/awslabs/nicodemus). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/).
+> This tutorial uses [`nicodemus`](https://github.com/awslabs/nicodemus). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}).
 
 This tutorial contains the same IND-CPA proof as the cryptocode tutorial, rewritten for the `nicodemus` pseudocode package. Comparing the two shows the key syntax differences.
 
@@ -53,7 +53,7 @@ G0 to G1 is by PRF security (via Red1). G1 to G2 is by a birthday bound on nonce
 | `nicodemus.sty` | The nicodemus pseudocode package |
 | `commentary/*.tex` | Per-game commentary files (LaTeX) |
 
-See the [Source Files]({{ site.baseurl }}/examples/tutorial-nicodemus/source-files/) page for the full contents of `main.tex`.
+See the [Source Files]({% link examples/tutorial-nicodemus/source-files.md %}) page for the full contents of `main.tex`.
 
 ---
 
@@ -169,6 +169,6 @@ No `$...$` wrapping — unlike cryptocode, nicodemus content is text-mode. The `
 
 ## Next Steps
 
-- [Writing a Proof]({{ site.baseurl }}/getting-started/writing-proofs/) — full reference for the `.tex` input format
-- [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/) — the same proof using `cryptocode` (with a more detailed walkthrough)
-- [LaTeX Integration]({{ site.baseurl }}/getting-started/latex-integration/) — customizing `\tfchanged` and `\tfgamelabel`
+- [Writing a Proof]({% link getting-started/writing-proofs.md %}) — full reference for the `.tex` input format
+- [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) — the same proof using `cryptocode` (with a more detailed walkthrough)
+- [LaTeX Integration]({% link getting-started/latex-integration.md %}) — customizing `\tfchanged` and `\tfgamelabel`
