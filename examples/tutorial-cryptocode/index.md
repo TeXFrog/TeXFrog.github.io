@@ -13,7 +13,7 @@ has_children: true
 {: .note-title }
 > Package
 >
-> This tutorial uses [`cryptocode`](https://ctan.org/pkg/cryptocode) (the default). For the same proof using `nicodemus`, see [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/).
+> This tutorial uses [`cryptocode`](https://ctan.org/pkg/cryptocode) (the default). For the same proof using `nicodemus`, see [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}).
 
 This tutorial walks through a small, complete game-hopping proof to introduce important TeXFrog concepts. The proof is short enough to read in full, but exercises several features of the tool.
 
@@ -52,7 +52,7 @@ G0 to G1 is by PRF security (via Red1). G1 to G2 is by a birthday bound on nonce
 | `macros.tex` | Short macro definitions (no external dependencies) |
 | `commentary/*.tex` | Per-game commentary files (LaTeX) |
 
-See the [Source Files]({{ site.baseurl }}/examples/tutorial-cryptocode/source-files/) page for the full contents of `main.tex`.
+See the [Source Files]({% link examples/tutorial-cryptocode/source-files.md %}) page for the full contents of `main.tex`.
 
 ---
 
@@ -213,6 +213,6 @@ Or [view the pre-built interactive demo]({{ site.baseurl }}/demos/tutorial-crypt
 
 ## Next Steps
 
-- [Writing a Proof]({{ site.baseurl }}/getting-started/writing-proofs/) — full reference for the `.tex` input format
-- [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/) — the same proof using the `nicodemus` package
-- [LaTeX Integration]({{ site.baseurl }}/getting-started/latex-integration/) — customizing `\tfchanged` and `\tfgamelabel`
+- [Writing a Proof]({% link getting-started/writing-proofs.md %}) — full reference for the `.tex` input format
+- [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) — the same proof using the `nicodemus` package
+- [LaTeX Integration]({% link getting-started/latex-integration.md %}) — customizing `\tfchanged` and `\tfgamelabel`

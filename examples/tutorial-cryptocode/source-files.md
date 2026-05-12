@@ -8,7 +8,7 @@ nav_order: 1
 
 # Source Files: cryptocode Tutorial
 
-These are the input files for the [cryptocode tutorial]({{ site.baseurl }}/examples/tutorial-cryptocode/).
+These are the input files for the [cryptocode tutorial]({% link examples/tutorial-cryptocode/index.md %}).
 
 ## main.tex
 

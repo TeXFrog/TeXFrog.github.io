@@ -55,7 +55,7 @@ Common problems proof authors encounter, organized by symptom. If you have the P
 \tfonly{G2-G9}{(\ct_2^*, \_\_) \getsr \KEM_2.\encaps(\pk_2) \\}
 ```
 
-If these were scattered in different parts of the file, each game would see them in the wrong position. See the [Source Ordering Constraint]({{ site.baseurl }}/getting-started/writing-proofs/#source-ordering-constraint) section in the writing guide.
+If these were scattered in different parts of the file, each game would see them in the wrong position. See the [Source Ordering Constraint]({% link getting-started/writing-proofs.md %}#source-ordering-constraint) section in the writing guide.
 
 ### Tag range includes unexpected games (e.g., reductions)
 

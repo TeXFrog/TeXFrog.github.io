@@ -7,7 +7,7 @@ nav_order: 1
 
 # Writing a Proof
 
-This is the reference guide for TeXFrog's `.tex` input format. For a hands-on introduction, start with the [cryptocode tutorial]({{ site.baseurl }}/examples/tutorial-cryptocode/) or the [nicodemus tutorial]({{ site.baseurl }}/examples/tutorial-nicodemus/) instead.
+This is the reference guide for TeXFrog's `.tex` input format. For a hands-on introduction, start with the [cryptocode tutorial]({% link examples/tutorial-cryptocode/index.md %}) or the [nicodemus tutorial]({% link examples/tutorial-nicodemus/index.md %}) instead.
 
 {: .note-title }
 > Tip
@@ -232,7 +232,7 @@ Ranges are resolved **positionally** — by the order games appear in the `\tfga
 
 This lets you insert reductions (e.g., `Red2`) between games without breaking range syntax.
 
-Unknown labels in tags will raise a warning on the command line but otherwise are silently ignored, so a typo like `G10` when `G10` doesn't exist will simply cause the content to appear in no game. Run `texfrog check --strict` to catch these — see [Troubleshooting]({{ site.baseurl }}/getting-started/troubleshooting/#lines-are-missing-from-a-game).
+Unknown labels in tags will raise a warning on the command line but otherwise are silently ignored, so a typo like `G10` when `G10` doesn't exist will simply cause the content to appear in no game. Run `texfrog check --strict` to catch these — see [Troubleshooting]({% link getting-started/troubleshooting.md %}#lines-are-missing-from-a-game).
 
 ### Source Ordering Constraint
 
@@ -294,7 +294,7 @@ When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` 
 ```
 {% endraw %}
 
-**Avoid blank lines in the source block.** Blank lines in output are stripped to prevent `varwidth` dimension errors in pseudocode environments like `pcvstack`. See [Troubleshooting]({{ site.baseurl }}/getting-started/troubleshooting/#dimension-too-large-from-pdflatex) for more on this error.
+**Avoid blank lines in the source block.** Blank lines in output are stripped to prevent `varwidth` dimension errors in pseudocode environments like `pcvstack`. See [Troubleshooting]({% link getting-started/troubleshooting.md %}#dimension-too-large-from-pdflatex) for more on this error.
 
 ## Package-Specific Notes
 
@@ -319,5 +319,5 @@ When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` 
 
 The repository includes worked examples you can study and run. All examples compile directly with `pdflatex` (no Python needed) — just place `texfrog.sty` in the same directory.
 
-- [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/) — IND-CPA proof using `cryptocode` with a detailed walkthrough and commentary files
-- [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/) — same proof using `nicodemus`, showing the syntax differences
+- [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) — IND-CPA proof using `cryptocode` with a detailed walkthrough and commentary files
+- [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) — same proof using `nicodemus`, showing the syntax differences

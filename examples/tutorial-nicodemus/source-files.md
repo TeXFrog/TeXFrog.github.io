@@ -8,7 +8,7 @@ nav_order: 1
 
 # Source Files: nicodemus Tutorial
 
-These are the input files for the [nicodemus tutorial]({{ site.baseurl }}/examples/tutorial-nicodemus/).
+These are the input files for the [nicodemus tutorial]({% link examples/tutorial-nicodemus/index.md %}).
 
 ## main.tex
 

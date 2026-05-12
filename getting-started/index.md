@@ -177,7 +177,7 @@ You need a single `.tex` file that serves as both the LaTeX document and the TeX
 
 - **`proof.tex`** — declares the list of games and reductions, contains the pseudocode source with `\tfonly` tags, and optionally specifies commentary, figures, and which pseudocode package to use
 
-See [Writing a Proof]({{ site.baseurl }}/getting-started/writing-proofs/) for a full guide, and the [tutorials]({{ site.baseurl }}/examples/) for worked examples.
+See [Writing a Proof]({% link getting-started/writing-proofs.md %}) for a full guide, and the [tutorials]({% link examples/index.md %}) for worked examples.
 
 ## Included Examples
 
@@ -186,8 +186,8 @@ All examples compile directly with `pdflatex` — no Python needed. Just place `
 | Directory | Description | Package | Live Demo |
 |-----------|-------------|---------|-----------|
 | [Tutorial: cryptocode quickstart](https://github.com/TeXFrog/TeXFrog/tree/main/examples/tutorial-cryptocode-quickstart) | Minimal IND-CPA proof (recommended starting point) | `cryptocode` | |
-| [Tutorial: cryptocode]({{ site.baseurl }}/examples/tutorial-cryptocode/) | Same proof with detailed walkthrough and commentary | `cryptocode` | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
-| [Tutorial: nicodemus]({{ site.baseurl }}/examples/tutorial-nicodemus/) | Same proof using `nicodemus` syntax | `nicodemus` | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
+| [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) | Same proof with detailed walkthrough and commentary | `cryptocode` | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
+| [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) | Same proof using `nicodemus` syntax | `nicodemus` | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
 
 Comparing the cryptocode and nicodemus tutorials shows the syntax differences between pseudocode packages.
 
