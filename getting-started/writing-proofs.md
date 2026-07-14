@@ -7,12 +7,12 @@ nav_order: 1
 
 # Writing a Proof
 
-This is the reference guide for TeXFrog's `.tex` input format. For a hands-on introduction, start with the [cryptocode tutorial]({% link examples/tutorial-cryptocode/index.md %}) or the [nicodemus tutorial]({% link examples/tutorial-nicodemus/index.md %}) instead.
+This is the reference guide for TeXFrog's `.tex` input format. For a hands-on introduction, start with the [TeXFrog Tutorial]({% link examples/tutorial/index.md %}) instead — it walks through a complete proof and lets you switch between `cryptocode`, `nicodemus`, and `algpseudocodex` with tabs.
 
 {: .note-title }
 > Tip
 >
-> Run `texfrog init` to scaffold a starter proof with commented templates, then modify the generated files. Use `texfrog init --package nicodemus` for nicodemus-flavored templates.
+> Run `texfrog init` to scaffold a starter proof with commented templates, then modify the generated files. Use `texfrog init --package nicodemus` or `texfrog init --package algpseudocodex` for nicodemus- or algpseudocodex-flavored templates.
 
 ## Overview
 
@@ -72,6 +72,7 @@ Select the pseudocode LaTeX package with the `package` option on `\usepackage`:
 ```latex
 \usepackage[package=cryptocode]{texfrog}   % default
 \usepackage[package=nicodemus]{texfrog}
+\usepackage[package=algpseudocodex]{texfrog}
 ```
 
 This controls how TeXFrog generates macro definitions (e.g., whether `\tfchanged` wraps content in math mode), how it handles line separators in consolidated figures, and which packages are loaded in the HTML build wrapper. If the `package` option is omitted, it defaults to `cryptocode`.
@@ -148,7 +149,7 @@ This follows by inlining the decapsulation result.
 
 You can use `\tfgamename{myproof}{G1}` in commentary to reference a game's `latex_name`.
 
-**HTML viewer:** Commentary is compiled through the same LaTeX → PDF → SVG pipeline as game pseudocode, so any LaTeX commands or environments used in commentary (e.g., `\newtheorem{claim}{Claim}`) must be defined in your macros file. The packages available in the HTML compilation wrapper include your selected pseudocode package (e.g., `cryptocode` or `nicodemus`), plus `amsfonts`, `amsmath`, `amsthm`, `adjustbox`, and `xcolor`. Additional packages can be added via `\tfpreamble`.
+**HTML viewer:** Commentary is compiled through the same LaTeX → PDF → SVG pipeline as game pseudocode, so any LaTeX commands or environments used in commentary (e.g., `\newtheorem{claim}{Claim}`) must be defined in your macros file. The packages available in the HTML compilation wrapper include your selected pseudocode package (e.g., `cryptocode`, `nicodemus`, or `algpseudocodex`), plus `amsfonts`, `amsmath`, `amsthm`, `adjustbox`, and `xcolor`. Additional packages can be added via `\tfpreamble`.
 
 ### Figures
 
@@ -315,9 +316,17 @@ When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` 
 - Consolidated figures do NOT insert `\\` between lines
 - `\tfgamelabel` outputs the content without a comment macro
 
+### algpseudocodex
+
+- Lines start with `\State` (or `\Statex`), the algorithmicx-based syntax (inside `algorithmic` environments)
+- Content is in text mode, like nicodemus (no math-mode wrapping)
+- `\State` prefix is kept outside `\tfchanged{}`: algorithmicx's `\State` does real vertical-mode box/`\prevdepth` bookkeeping that breaks if nested inside the highlight box
+- `\Procedure` lines are treated as structural headers and never wrapped with `\tfchanged`
+- Consolidated figures do NOT insert `\\` between lines
+- `\tfgamelabel` uses `\Comment` for inline game labels
+
 ## Examples
 
 The repository includes worked examples you can study and run. All examples compile directly with `pdflatex` (no Python needed) — just place `texfrog.sty` in the same directory.
 
-- [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) — IND-CPA proof using `cryptocode` with a detailed walkthrough and commentary files
-- [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) — same proof using `nicodemus`, showing the syntax differences
+- [TeXFrog Tutorial]({% link examples/tutorial/index.md %}) — a complete IND-CPA proof with a detailed walkthrough and commentary, presented in `cryptocode`, `nicodemus`, and `algpseudocodex` with tabs to compare the syntax

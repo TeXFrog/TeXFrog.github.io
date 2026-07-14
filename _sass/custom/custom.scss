@@ -6,3 +6,85 @@
 	background-size: cover;
 	margin-left: 10px;
 }
+
+/* ------------------------------------------------------------------ *
+ * Synchronized per-package code tabs (cryptocode / nicodemus / …)
+ * Markup is emitted by the {% raw %}{% include tabs … %}{% endraw %}-style
+ * blocks in the docs; switching + page-wide sync is wired up in
+ * _includes/head_custom.html. Descendant selectors are used throughout
+ * because kramdown wraps inline HTML runs in <p>.
+ * ------------------------------------------------------------------ */
+.tf-tabs {
+	border: 1px solid #eeebee;
+	border-radius: 6px;
+	margin: 1rem 0 1.5rem;
+	overflow: hidden;
+}
+.tf-tabs .tabrow {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	background: #f5f6fa;
+	border-bottom: 1px solid #eeebee;
+}
+.tf-tabs [role="tab"] {
+	font: inherit;
+	font-size: 0.78rem;
+	font-weight: 600;
+	color: #5c5962;
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+.tf-tabs [role="tab"]:hover { color: #27262b; }
+.tf-tabs [role="tab"][aria-selected="true"] {
+	color: #5c6ac4;
+	border-bottom-color: #5c6ac4;
+	background: #fff;
+}
+.tf-tabs [role="tab"]:focus-visible {
+	outline: 2px solid #5c6ac4;
+	outline-offset: -2px;
+}
+.tf-tabs .tf-panel { display: none; }
+.tf-tabs .tf-panel.is-active { display: block; }
+/* Prose panels (e.g. the package-at-a-glance lists) get comfortable padding. */
+.tf-tabs .tf-panel > p,
+.tf-tabs .tf-panel > ul,
+.tf-tabs .tf-panel > ol { margin: 0.7rem 0.9rem; }
+/* Code blocks sit flush inside the tab frame — drop just-the-docs' nested
+   card look so there's no border-within-a-border. The .highlighter-rouge is
+   the outer wrapper; div.highlight is the element the theme actually gives a
+   1px border + radius (via its scroll-and-spacing mixin), so both are reset.
+   .tf-tabs overflow:hidden clips the square corners to the outer radius. */
+.tf-tabs .tf-panel > div.highlighter-rouge {
+	margin: 0;
+	border-radius: 0;
+}
+.tf-tabs .tf-panel div.highlight {
+	border: 0;
+	border-radius: 0;
+}
+.tf-tabs .tf-panel .panel-tag {
+	display: none;
+	font-size: 0.72rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #5c5962;
+	font-weight: 600;
+}
+
+/* No-JS fallback: show every panel with its label, hide the inert tab row */
+html:not(.tf-js) .tf-tabs .tabrow { display: none; }
+html:not(.tf-js) .tf-tabs .tf-panel { display: block; }
+html:not(.tf-js) .tf-tabs .tf-panel .panel-tag { display: block; }
+
+/* Print: reveal all panels so nothing hides in a PDF */
+@media print {
+	.tf-tabs .tabrow { display: none; }
+	.tf-tabs .tf-panel { display: block !important; }
+	.tf-tabs .tf-panel .panel-tag { display: block; }
+}
