@@ -23,7 +23,7 @@ TeXFrog helps cryptographers manage game-hopping proofs in LaTeX. If you have ev
 
 All from that one source file.
 
-TeXFrog currently supports the [`cryptocode`](https://ctan.org/pkg/cryptocode) and [`nicodemus`](https://github.com/awslabs/nicodemus) pseudocode packages, and we are open to supporting others.
+TeXFrog currently supports the [`cryptocode`](https://ctan.org/pkg/cryptocode), [`nicodemus`](https://github.com/TeXFrog/TeXFrog/blob/main/resources/nicodemus.sty), and [`algpseudocodex`](https://ctan.org/pkg/algpseudocodex) pseudocode packages, and we are open to supporting others.
 
 ## What The Source Code Looks Like
 
@@ -112,7 +112,7 @@ The fastest way to get started without Python is to copy the [tutorial-cryptocod
 
 ### Starting with the Python CLI
 
-The fastest way to start a new proof is with `texfrog init`. This creates a minimal, runnable proof (`proof.tex`, `macros.tex`, and `commentary/*.tex`) with comments explaining each field.
+The fastest way to start a new proof is with `texfrog init`. This creates a minimal, runnable proof (`proof.tex`, `macros.tex`, `commentary/*.tex`, and a `.gitignore`) with comments explaining each field.
 
 ```bash
 # Scaffold a new proof in the current directory using cryptocode for pseudocode
@@ -123,6 +123,9 @@ texfrog init mydirectory
 
 # ... or using the nicodemus package for pseudocode
 texfrog init myproof --package nicodemus
+
+# ... or using the algpseudocodex package for pseudocode
+texfrog init myproof --package algpseudocodex
 ```
 
 The [TeXFrog repository contains tutorials](https://github.com/TeXFrog/TeXFrog/tree/main/examples) you can study:
@@ -142,7 +145,7 @@ texfrog html serve tutorial-cryptocode/main.tex
 ### Scaffold a new proof
 
 ```bash
-texfrog init [DIRECTORY] [--package cryptocode|nicodemus]
+texfrog init [DIRECTORY] [--package cryptocode|nicodemus|algpseudocodex]
 ```
 
 Creates starter files in `DIRECTORY` (default: current directory). The `--package` option selects the pseudocode package (default: `cryptocode`). Existing files are never overwritten.
@@ -188,8 +191,9 @@ All examples compile directly with `pdflatex` — no Python needed. Just place `
 | [Tutorial: cryptocode quickstart](https://github.com/TeXFrog/TeXFrog/tree/main/examples/tutorial-cryptocode-quickstart) | Minimal IND-CPA proof (recommended starting point) | `cryptocode` | |
 | [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) | Same proof with detailed walkthrough and commentary | `cryptocode` | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
 | [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) | Same proof using `nicodemus` syntax | `nicodemus` | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
+| [Tutorial: algpseudocodex]({% link examples/tutorial-algpseudocodex/index.md %}) | Same proof using `algpseudocodex` syntax | `algpseudocodex` | [View demo]({{ site.baseurl }}/demos/tutorial-algpseudocodex/){:target="_blank"} |
 
-Comparing the cryptocode and nicodemus tutorials shows the syntax differences between pseudocode packages.
+Comparing the cryptocode, nicodemus, and algpseudocodex tutorials shows the syntax differences between pseudocode packages.
 
 ## Contributing
 

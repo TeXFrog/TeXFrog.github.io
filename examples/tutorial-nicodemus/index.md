@@ -13,7 +13,7 @@ has_children: true
 {: .note-title }
 > Package
 >
-> This tutorial uses [`nicodemus`](https://github.com/awslabs/nicodemus). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}).
+> This tutorial uses [`nicodemus`](https://github.com/TeXFrog/TeXFrog/blob/main/resources/nicodemus.sty) (by Bertram Poettering; not on CTAN, bundled with TeXFrog). For the same proof using `cryptocode` (the default, with a more detailed walkthrough), see [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}).
 
 This tutorial contains the same IND-CPA proof as the cryptocode tutorial, rewritten for the `nicodemus` pseudocode package. Comparing the two shows the key syntax differences.
 

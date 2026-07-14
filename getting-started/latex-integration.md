@@ -12,7 +12,7 @@ TeXFrog proofs compile directly with `pdflatex` using the `texfrog.sty` package.
 ## Setup
 
 1. Place `texfrog.sty` in the same directory as your `.tex` file (or anywhere TeX can find it).
-2. Add `\usepackage[package=cryptocode]{texfrog}` (or `package=nicodemus`) to your preamble.
+2. Add `\usepackage[package=cryptocode]{texfrog}` (or `package=nicodemus`, or `package=algpseudocodex`) to your preamble.
 3. Compile with `pdflatex` as usual.
 
 This works on Overleaf — just upload `texfrog.sty` to your project.
@@ -51,6 +51,7 @@ Changed lines are wrapped in `\tfchanged{content}`. The default definition depen
 
 - **cryptocode**: `\providecommand{\tfchanged}[1]{\colorbox{blue!15}{$#1$}}`
 - **nicodemus**: `\providecommand{\tfchanged}[1]{\colorbox{blue!15}{#1}}`
+- **algpseudocodex**: text-mode like nicodemus, but the box wraps content in a `varwidth` of the remaining line width so long highlighted lines still break instead of overflowing the margin
 
 This renders changed lines with a light blue background. Because `\providecommand` is used, you can override it in your paper preamble with `\renewcommand`:
 
@@ -65,7 +66,7 @@ Or suppress highlighting entirely (useful for the final paper version where you 
 \renewcommand{\tfchanged}[1]{#1}
 ```
 
-**Note on math mode:** For `cryptocode`, the default macro wraps content in `$...$` because the pseudocode content is in math mode and `\colorbox` operates in text mode. For `nicodemus`, content is already in text mode, so no `$...$` wrapping is needed. If you write a custom `\tfchanged`, match the mode of your pseudocode package.
+**Note on math mode:** For `cryptocode`, the default macro wraps content in `$...$` because the pseudocode content is in math mode and `\colorbox` operates in text mode. For `nicodemus` and `algpseudocodex`, content is already in text mode, so no `$...$` wrapping is needed. If you write a custom `\tfchanged`, match the mode of your pseudocode package.
 
 ## Customizing the Game Label Macro
 
@@ -73,6 +74,7 @@ In consolidated figures, lines that appear in only some of the selected games ar
 
 - **cryptocode**: `\providecommand{\tfgamelabel}[2]{#2 \pccomment{#1}}` — appends a `\pccomment` annotation
 - **nicodemus**: `\providecommand{\tfgamelabel}[2]{#2}` — no annotation (nicodemus has no built-in comment macro)
+- **algpseudocodex**: `\providecommand{\tfgamelabel}[2]{#2 \Comment{#1}}` — appends an algorithmicx `\Comment` annotation
 
 Override with `\renewcommand` to change the appearance:
 

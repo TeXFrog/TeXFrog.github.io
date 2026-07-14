@@ -10,9 +10,9 @@ has_toc: false
 
 All examples compile directly with `pdflatex` — no Python needed. Just place `texfrog.sty` in the same directory.
 
-TeXFrog ships with tutorials that implement the same IND-CPA game-hopping proof using different pseudocode packages. Comparing them side by side shows the syntax differences between `cryptocode` and `nicodemus`.
+TeXFrog ships with tutorials that implement the same IND-CPA game-hopping proof using different pseudocode packages. Comparing them side by side shows the syntax differences between `cryptocode`, `nicodemus`, and `algpseudocodex`.
 
-Both tutorials prove IND-CPA security of a PRF-based symmetric encryption scheme via a three-hop game sequence with 4 games and 1 reduction.
+All three tutorials prove IND-CPA security of a PRF-based symmetric encryption scheme via a three-hop game sequence with 4 games and 1 reduction.
 
 We also have a demo of TeXFrog for a key exchange model, specifically a signed-Diffie–Hellman key exchange protocol. This is extracted from Section 3.1 of a [technical report](https://github.com/proof-ladders/protocol-ladder/blob/main/Notes/computational/main.pdf) by Doreen Riepel and Paul Rösler for the [proof-ladders project](https://github.com/proof-ladders/).
 
@@ -21,6 +21,7 @@ We also have a demo of TeXFrog for a key exchange model, specifically a signed-D
 | [Tutorial: cryptocode quickstart](https://github.com/TeXFrog/TeXFrog/tree/main/examples/tutorial-cryptocode-quickstart) | `cryptocode` | N/A | N/A |
 | [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) | `cryptocode` | [Source]({% link examples/tutorial-cryptocode/source-files.md %}) | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
 | [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) | `nicodemus` | [Source]({% link examples/tutorial-nicodemus/source-files.md %}) | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
+| [Tutorial: algpseudocodex]({% link examples/tutorial-algpseudocodex/index.md %}) | `algpseudocodex` | [Source]({% link examples/tutorial-algpseudocodex/source-files.md %}) | [View demo]({{ site.baseurl }}/demos/tutorial-algpseudocodex/){:target="_blank"} |
 | [Multiple proofs](https://github.com/TeXFrog/TeXFrog/tree/main/examples/example-multiproof) | `cryptocode` | N/A | N/A |
 | [Signed DH proof](https://github.com/proof-ladders/protocol-ladder/blob/main/Notes/computational/main.pdf){:target="_blank" } | `nicodemus` | N/A | [View demo]({{ site.baseurl }}/demos/example-proof-ladders-signed-dh/){:target="_blank"} |
 
