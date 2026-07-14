@@ -189,11 +189,9 @@ All examples compile directly with `pdflatex` — no Python needed. Just place `
 | Directory | Description | Package | Live Demo |
 |-----------|-------------|---------|-----------|
 | [Tutorial: cryptocode quickstart](https://github.com/TeXFrog/TeXFrog/tree/main/examples/tutorial-cryptocode-quickstart) | Minimal IND-CPA proof (recommended starting point) | `cryptocode` | |
-| [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) | Same proof with detailed walkthrough and commentary | `cryptocode` | [View demo]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} |
-| [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) | Same proof using `nicodemus` syntax | `nicodemus` | [View demo]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} |
-| [Tutorial: algpseudocodex]({% link examples/tutorial-algpseudocodex/index.md %}) | Same proof using `algpseudocodex` syntax | `algpseudocodex` | [View demo]({{ site.baseurl }}/demos/tutorial-algpseudocodex/){:target="_blank"} |
+| [TeXFrog Tutorial]({% link examples/tutorial/index.md %}) | Same proof with a detailed walkthrough and commentary, in all three packages (switchable with tabs) | `cryptocode` · `nicodemus` · `algpseudocodex` | [cryptocode]({{ site.baseurl }}/demos/tutorial-cryptocode/){:target="_blank"} · [nicodemus]({{ site.baseurl }}/demos/tutorial-nicodemus/){:target="_blank"} · [algpseudocodex]({{ site.baseurl }}/demos/tutorial-algpseudocodex/){:target="_blank"} |
 
-Comparing the cryptocode, nicodemus, and algpseudocodex tutorials shows the syntax differences between pseudocode packages.
+The tutorial shows the same proof in each pseudocode package, so you can compare the syntax differences side by side.
 
 ## Contributing
 

@@ -7,7 +7,7 @@ nav_order: 1
 
 # Writing a Proof
 
-This is the reference guide for TeXFrog's `.tex` input format. For a hands-on introduction, start with the [cryptocode tutorial]({% link examples/tutorial-cryptocode/index.md %}), the [nicodemus tutorial]({% link examples/tutorial-nicodemus/index.md %}), or the [algpseudocodex tutorial]({% link examples/tutorial-algpseudocodex/index.md %}) instead.
+This is the reference guide for TeXFrog's `.tex` input format. For a hands-on introduction, start with the [TeXFrog Tutorial]({% link examples/tutorial/index.md %}) instead — it walks through a complete proof and lets you switch between `cryptocode`, `nicodemus`, and `algpseudocodex` with tabs.
 
 {: .note-title }
 > Tip
@@ -329,6 +329,4 @@ When generating the LaTeX output, TeXFrog wraps changed lines in `\tfchanged{}` 
 
 The repository includes worked examples you can study and run. All examples compile directly with `pdflatex` (no Python needed) — just place `texfrog.sty` in the same directory.
 
-- [Tutorial: cryptocode]({% link examples/tutorial-cryptocode/index.md %}) — IND-CPA proof using `cryptocode` with a detailed walkthrough and commentary files
-- [Tutorial: nicodemus]({% link examples/tutorial-nicodemus/index.md %}) — same proof using `nicodemus`, showing the syntax differences
-- [Tutorial: algpseudocodex]({% link examples/tutorial-algpseudocodex/index.md %}) — same proof using `algpseudocodex`, showing the `algorithmic`/`\Procedure`/`\State` syntax
+- [TeXFrog Tutorial]({% link examples/tutorial/index.md %}) — a complete IND-CPA proof with a detailed walkthrough and commentary, presented in `cryptocode`, `nicodemus`, and `algpseudocodex` with tabs to compare the syntax

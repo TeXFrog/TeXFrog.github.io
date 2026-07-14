@@ -1,0 +1,50 @@
+<!-- Synchronized per-package code tabs. The .tf-js class is added synchronously
+     so panels are hidden before first paint (no flash); wiring runs on load. -->
+<script>
+  document.documentElement.classList.add("tf-js");
+  document.addEventListener("DOMContentLoaded", function () {
+    var KEY = "texfrog-pkg";
+    var groups = [].slice.call(document.querySelectorAll(".tf-tabs"));
+    if (!groups.length) return;
+
+    function apply(pkg) {
+      groups.forEach(function (g) {
+        var tabs = [].slice.call(g.querySelectorAll('[role="tab"]'));
+        var avail = tabs.map(function (t) { return t.getAttribute("data-pkg"); });
+        var pick = avail.indexOf(pkg) >= 0 ? pkg : avail[0];
+        tabs.forEach(function (t) {
+          var on = t.getAttribute("data-pkg") === pick;
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          t.tabIndex = on ? 0 : -1;
+        });
+        [].forEach.call(g.querySelectorAll(".tf-panel"), function (p) {
+          p.classList.toggle("is-active", p.getAttribute("data-pkg") === pick);
+        });
+      });
+      try { localStorage.setItem(KEY, pkg); } catch (e) {}
+    }
+
+    groups.forEach(function (g) {
+      var tabs = [].slice.call(g.querySelectorAll('[role="tab"]'));
+      g.addEventListener("click", function (e) {
+        var t = e.target.closest('[role="tab"]');
+        if (t) apply(t.getAttribute("data-pkg"));
+      });
+      g.addEventListener("keydown", function (e) {
+        var t = e.target.closest('[role="tab"]');
+        if (!t) return;
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          var i = tabs.indexOf(t), n = tabs.length;
+          var j = e.key === "ArrowRight" ? (i + 1) % n : (i - 1 + n) % n;
+          apply(tabs[j].getAttribute("data-pkg"));
+          tabs[j].focus();
+        }
+      });
+    });
+
+    var init = "cryptocode";
+    try { var s = localStorage.getItem(KEY); if (s) init = s; } catch (e) {}
+    apply(init);
+  });
+</script>
